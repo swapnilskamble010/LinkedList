@@ -1,24 +1,27 @@
 package com.bl.ds.linkedlist;
 
-public class MyNode<K> {
+public class MyNode<K> implements INode<K>{
 	K key;
-	MyNode next;
+	INode next;
 	
-	public MyNode getNext() {
+	public K getKey() {
+		return key;
+	}
+
+	public void setKey(K key) {
+		this.key = key;
+	}
+
+	public INode getNext() {
 		return next;
 	}
 
-	public void setNext(MyNode next) {
+	public void setNext(INode next) {
 		this.next = next;
 	}
 
 	public MyNode(K key) {
 		this.key = key;
+		this.next = null;
 	}
-
-	@Override
-	public String toString() {
-		return "MyNode [key=" + key + ", next=" + next + "]";
-	}
-	
 }
