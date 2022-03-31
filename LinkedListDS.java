@@ -11,8 +11,8 @@ public class LinkedListDS {
 		
 		MyLinkedList myLinkedList = new MyLinkedList();
 		myLinkedList.add(node1);
-		myLinkedList.append(node2);
 		myLinkedList.append(node3);
+		myLinkedList.insert(node1, node2);
 		myLinkedList.printMyNodes();
 	}	
 }
