@@ -14,7 +14,8 @@ public class LinkedListDS {
 		myLinkedList.append(node3);
 		myLinkedList.insert(node1, node2);
 		//myLinkedList.pop();
-		myLinkedList.popLast();
+		//myLinkedList.popLast();
+		myLinkedList.search(30);
 		myLinkedList.printMyNodes();
 	}	
 }

@@ -58,6 +58,21 @@ public class MyLinkedList {
 		return tempNode;
 	}
 	
+	public void search(int key) {
+		INode tempNode = head;
+		boolean flag = false;
+		while(tempNode != null) {
+			if((int)tempNode.getKey() == key) {
+				System.out.println(key + " is Found in the Linked List");
+				flag = true;
+			}
+			tempNode = tempNode.getNext();
+		}
+		if(flag == false) {
+			System.out.println(key + " is not Found in the Linked List");
+		}
+	}
+	
 	public void printMyNodes() {
 		INode tempNode = head;
 		System.out.print("My Nodes: ");
