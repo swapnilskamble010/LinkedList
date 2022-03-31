@@ -13,7 +13,8 @@ public class LinkedListDS {
 		myLinkedList.add(node1);
 		myLinkedList.append(node3);
 		myLinkedList.insert(node1, node2);
-		myLinkedList.pop();
+		//myLinkedList.pop();
+		myLinkedList.popLast();
 		myLinkedList.printMyNodes();
 	}	
 }

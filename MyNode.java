@@ -1,8 +1,8 @@
 package com.bl.ds.linkedlist;
 
 public class MyNode<K> implements INode<K>{
-	K key;
-	INode next;
+	public K key;
+	public INode next;
 	
 	public K getKey() {
 		return key;
