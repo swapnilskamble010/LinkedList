@@ -58,7 +58,7 @@ public class MyLinkedList {
 		return tempNode;
 	}
 	
-	public void search(int key) {
+	public boolean search(int key) {
 		INode tempNode = head;
 		boolean flag = false;
 		while(tempNode != null) {
@@ -71,6 +71,42 @@ public class MyLinkedList {
 		if(flag == false) {
 			System.out.println(key + " is not Found in the Linked List");
 		}
+		return flag;
+	}
+	
+	public void delete(int key) {
+		INode tempNode = head;
+		INode tempNode1 = head;
+		if(search(key)) {
+			while((int)tempNode.getNext().getKey() != key) {
+				tempNode = tempNode.getNext();
+			}
+			
+			while((int)tempNode1.getKey() != key) {
+				tempNode1 = tempNode1.getNext();
+			}
+			
+			tempNode1 = tempNode1.getNext();
+			
+			if((int)tempNode.getNext().getKey() == key) {
+				tempNode.setNext(tempNode1);
+				System.out.println(key + " is Deleted from the Linked List");
+			}
+		}
+		else {
+			System.out.println("Please Enter the Valid Element to Delete it from the Linked List");
+		}
+	}
+	
+	public void size() {
+		INode tempNode = head;
+		int count = 0;
+		while(tempNode.getNext() != null) {
+			count++;
+			tempNode = tempNode.getNext();
+		}
+		count++;
+		System.out.println("The Size of Linked List is: " + count);
 	}
 	
 	public void printMyNodes() {
