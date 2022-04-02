@@ -1,6 +1,6 @@
 package com.bl.ds.linkedlist;
 
-public class MyNode<K> implements INode<K>{
+public class MyNode<K> implements INode<K> {
 	public K key;
 	public INode next;
 	

@@ -8,7 +8,7 @@ public class MyLinkedList {
 		this.head = null;
 		this.tail = null;
 	}
-	
+
 	public void add(INode newNode) {
 		if(this.head == null) {
 			this.head = newNode;
@@ -22,7 +22,7 @@ public class MyLinkedList {
 			this.head.setNext(tempNode);
 		}
 	}
-	
+
 	public void append(INode newNode) {
 		if(this.head == null) {
 			this.head = newNode;
@@ -35,33 +35,34 @@ public class MyLinkedList {
 			this.tail = newNode;
 		}
 	}
-	
+
 	public void insert(INode newNode, INode insertNode) {
 		INode tempNode = newNode.getNext();
-		newNode.setNext(insertNode);
+		newNode.setNext(insertNode); 
 		insertNode.setNext(tempNode);
+		System.out.println(insertNode.getKey() + " is successfully inserted");
 	}
-	
+
 	public INode pop() {
 		INode tempNode = this.head;
 		this.head = head.getNext();
 		return tempNode;
 	}
-	
+
 	public INode popLast() {
 		INode tempNode = this.head;
 		while(tempNode.getNext() != this.tail) {
 			tempNode = tempNode.getNext();
 		}
-		this.tail = tempNode;
+		this.tail = tempNode;//tail =30
 		this.tail.setNext(null);
 		return tempNode;
 	}
-	
+
 	public boolean search(int key) {
 		INode tempNode = head;
 		boolean flag = false;
-		while(tempNode != null) {
+		while(tempNode.getNext() != null) {
 			if((int)tempNode.getKey() == key) {
 				System.out.println(key + " is Found in the Linked List");
 				flag = true;
@@ -74,6 +75,26 @@ public class MyLinkedList {
 		return flag;
 	}
 	
+	public void insertAfterValue(int key, int value) {
+		INode tempNode = head;
+		boolean flag = false;
+		while(tempNode.getNext() != null) {
+			if((int)tempNode.getKey() == key) {
+				System.out.println(key + " is Found in the Linked List");
+				flag = true;
+				INode tempNode1 = tempNode.getNext();
+				tempNode.getNext().setKey(value);
+				tempNode.getNext().setNext(tempNode1);
+				System.out.println(tempNode.getNext().getKey() + " is successfully inserted");
+				break;
+			}
+			tempNode = tempNode.getNext();
+		}
+		if(flag == false) {
+			System.out.println(key + " is not Found in the Linked List");
+		}
+	}
+
 	public void delete(int key) {
 		INode tempNode = head;
 		INode tempNode1 = head;
@@ -81,13 +102,13 @@ public class MyLinkedList {
 			while((int)tempNode.getNext().getKey() != key) {
 				tempNode = tempNode.getNext();
 			}
-			
+
 			while((int)tempNode1.getKey() != key) {
 				tempNode1 = tempNode1.getNext();
 			}
-			
+
 			tempNode1 = tempNode1.getNext();
-			
+
 			if((int)tempNode.getNext().getKey() == key) {
 				tempNode.setNext(tempNode1);
 				System.out.println(key + " is Deleted from the Linked List");
@@ -97,24 +118,38 @@ public class MyLinkedList {
 			System.out.println("Please Enter the Valid Element to Delete it from the Linked List");
 		}
 	}
-	
-	public void size() {
+
+	public int size() {
 		INode tempNode = head;
 		int count = 0;
-		while(tempNode.getNext() != null) {
+		while(tempNode != null) {
 			count++;
 			tempNode = tempNode.getNext();
 		}
-		count++;
 		System.out.println("The Size of Linked List is: " + count);
+		return count;
 	}
-	
-	public void printMyNodes() {
-		INode tempNode = head;
-		System.out.print("My Nodes: ");
+
+	public void sortInAdd(INode node) {
+		add(node);
+		INode tempNode = this.head; 
 		while(tempNode.getNext() != null) {
+			int tempNode1 = (int)tempNode.getKey();
+			int tempNode2 = (int)tempNode.getNext().getKey();
+			if(tempNode1 > tempNode2) {
+				tempNode.setKey(tempNode2);
+				tempNode.getNext().setKey(tempNode1);				
+			}
+			tempNode = tempNode.getNext();
+		}
+	}
+
+	public void printMyNodes() {
+		INode tempNode = this.head;
+		System.out.print("My Nodes: ");
+		while(tempNode.getNext() != this.tail.getNext()) {
 			System.out.print(tempNode.getKey() + "->");
-				tempNode = tempNode.getNext();
+			tempNode = tempNode.getNext();
 		}
 		System.out.println(tempNode.getKey());
 	}
